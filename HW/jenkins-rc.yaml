@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: jenkins-rc
+spec:
+  replicas: 1
+  selector:
+    app: jenkins-rc-pod
+  template:
+    metadata:
+      labels:
+        app: jenkins-rc-pod
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins

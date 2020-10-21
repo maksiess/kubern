@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    name: nginx-dns
+  name: nginx-dns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-dns-pod
+  template:
+    metadata:
+      labels:
+        app: nginx-dns-pod
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - name: http
+          protocol: TCP
+          containerPort: 80
